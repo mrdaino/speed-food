@@ -1,0 +1,1 @@
+<a class="button" href="dettaglio.php?accesso=1" > Inserisci nuovo elemento </a>

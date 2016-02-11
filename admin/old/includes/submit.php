@@ -1,0 +1,1 @@
+<input type="button" class="button" value="salva" onClick="controllaForm()"/>

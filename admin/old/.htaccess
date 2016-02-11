@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Reserved Area"
+AuthUserFile /home/bananas/public_html/admin/.htpasswd
+Require valid-user
