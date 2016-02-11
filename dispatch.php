@@ -17,7 +17,6 @@ $config = array(
     #'cache' => new Tonic\MetadataCacheFile('/tmp/tonic.cache') // use the metadata cache
     #'cache' => new Tonic\MetadataCacheAPC // use the metadata cache
 );
-error_log("arrivvoooooo");
 
 $app = new Tonic\Application($config);
 
