@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * Created by PhpStorm.
+ * User: lorenzodaneo
+ * Date: 11/02/16
+ * Time: 11:24
+ */
+namespace SpeedFood;
+
+use Tonic\Resource;
+include "/var/www/cirula-ext/Cirula_back/vendor/peej/tonic/src/Tonic/Resource.php";
+
+
+/**
+ * Class BaseRequest
+ * @uri /base-request/:function
+ * @uri /base-request/:function/:object
+ */
+class BaseRequest extends Resource{
+
+    /**
+     * @method GET
+     * @param $function
+     * @param $object
+     * @provides application/json
+     * @json
+     */
+    function executeJob($function,$object){
+        return $this->$function(json_decode($object));
+    }
+
+    /**
+     * @method POST
+     * @param $function
+     * @accepts application/json
+     * @provides application/json
+     * @json
+     */
+    function executePostJob($function){
+        return $this->$function(json_decode($this->request->getData()));
+    }
+
+    function testRestfulService(){
+        return json_encode("ciao");
+    }
+
+
+
+}
