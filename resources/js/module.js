@@ -25,6 +25,9 @@ var app = angular.module('lunchModule',['ngRoute'])
                 title: title + separator + 'Prenotazione',
                 templateUrl: 'partials/prenotazione.html',
                 controller: 'prenotazioneCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
             });
 
         // enable HTML5mode to disable hashbang urls
