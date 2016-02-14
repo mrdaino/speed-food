@@ -7,12 +7,12 @@ app.controller('prenotazioneCtrl',['$scope','$routeParams',function($scope,$rout
 
     var userId = $routeParams.userId;
 
-    var response = request("prodotti").postOpt(userId);
+    var response = request("prodotti").post(userId);
     response.success(function(data){
         $scope.ristoranti = data;
         $scope.$apply();
     });
-    response = request("ingredienti").postOpt(userId);
+    response = request("ingredienti").post(userId);
     response.success(function(data){
         $scope.ristoranti = data;
         $scope.$apply();

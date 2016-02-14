@@ -28,22 +28,11 @@ var request = function(url){
             return response();
         },
         post: function(element){
-            var response = function() {
-                return $.ajax({
-                    'type': 'POST',
-                    'url': pathRequest + api,
-                    'data': {el: element},
-                    'contentType': 'application/json'
-                });
-            };
-            return response();
-        },
-        postOpt: function(element){
             $.postJSON = function() {
                 return jQuery.ajax({
                     headers: {
                         'Accept': 'application/json',
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
                     },
                     'type': 'POST',
                     'url': pathRequest + api,
