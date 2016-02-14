@@ -1,0 +1,28 @@
+<div class="container">
+    <!--PAGE TITLE-->
+
+    <div class="row">
+        <div class="span12">
+            <div class="page-header">
+                <h1>
+                    Ristoranti
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- /. PAGE TITLE-->
+
+
+    <div class="row" data-ng-repeat="user in ristoranti">
+        <div class="blog-post">
+            <h2>{{user.nome}}</h2>
+
+            <img style="width: 150px;display: inline" data-ng-src="{{user.img}}">
+            <span>{{user.descrizione}}</span>
+            <!--<a style="display: block;width: 150px;" class="btn btn-primary" href="/speed-food/front/partials/prenotazione/{{user.id}}">Ordina</a>-->
+            <a style="display: block;width: 150px;" class="btn btn-primary" data-ng-href="prenotazione/{{user.id}}">Ordina</a>
+        </div>
+    </div>
+
+</div>

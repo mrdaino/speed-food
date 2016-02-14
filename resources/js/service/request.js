@@ -1,13 +1,23 @@
 /**
- * Created by lorenzodaneo on 11/02/16.
+ * Created by Lorenzo Daneo.
+ * mail to lorenzo.daneo@coolsholp.it
  */
 
-var request = function(){
+var request = function(url){
 
-    var pathRequest = "/speed-food/back/base-request/";
+    var pathRequest = "http://speed-food_back.local/base-request/";
+
+    var api = "";
+
+    switch (url){
+        case "ristoranti": api = "getRistoranti"; break;
+        case "prodotti": api = "getProdotti"; break;
+        case "ingredienti": api = "getIngredienti"; break;
+        default: api = ""; break;
+    }
 
     return{
-        get: function(api){
+        get: function(){
             var response = function() {
                 return $.ajax({
                     'type': 'GET',
@@ -16,6 +26,32 @@ var request = function(){
                 });
             };
             return response();
+        },
+        post: function(element){
+            var response = function() {
+                return $.ajax({
+                    'type': 'POST',
+                    'url': pathRequest + api,
+                    'data': {el: element},
+                    'contentType': 'application/json'
+                });
+            };
+            return response();
+        },
+        postOpt: function(element){
+            $.postJSON = function() {
+                return jQuery.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    'type': 'POST',
+                    'url': pathRequest + api,
+                    'data': JSON.stringify(element),
+                    'dataType': 'json'
+                });
+            };
+            return $.postJSON();
         }
     }
 
