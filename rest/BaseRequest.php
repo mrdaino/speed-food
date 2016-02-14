@@ -9,7 +9,7 @@
 namespace UniLunch;
 
 use Tonic\Resource;
-include "/var/www/cirula-ext/Cirula_back/vendor/peej/tonic/src/Tonic/Resource.php";
+include __DIR__."/../vendor/peej/tonic/src/Tonic/Resource.php";
 
 $toInclude = scandir("resources");
 for($i=0;$i<count($toInclude);$i++){
@@ -31,14 +31,14 @@ class BaseRequest extends Resource{
      * @provides application/json
      * @json
      */
-    function executeJob($function,$object){
+    function executeGetJob($function,$object){
         return $this->$function(json_decode($object));
     }
 
     /**
      * @method POST
      * @param $function
-     * @accepts application/json
+     * @accepts application/x-www-form-urlencoded
      * @provides application/json
      * @json
      */
@@ -48,9 +48,14 @@ class BaseRequest extends Resource{
 
     function getRistoranti(){
         return DBConnector::getRistoranti();
-//        return json_encode("ciao");
     }
 
+    function getProdotti($userId){
+        return DBConnector::getProdottiByRistoranteId($userId);
+    }
 
+    function getIngredienti($userId){
+        return DBConnector::getIngredientiByRistoranteId($userId);
+    }
 
 }

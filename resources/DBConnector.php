@@ -50,4 +50,12 @@ class DBConnector{
         return json_encode($result);
     }
 
+    public static function getProdottiByRistoranteId($id){
+        return json_encode($id);
+    }
+
+    public static function getIngredientiByRistoranteId($id){
+        return json_encode($id);
+    }
+
 }
